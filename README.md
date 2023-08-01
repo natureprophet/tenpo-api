@@ -33,7 +33,7 @@ curl --location --request POST 'http://localhost:8080/api/v1/calculator/sum' \
 
 Retrieve the history of calls and results made to /sum endpoint
 ```
-curl --location --request GET 'https//localhost:8080/api/v1/calculator/journals'
+curl --location --request GET 'http://localhost:8080/api/v1/calculator/journals'
 ```
 
 ### Postman Collection
