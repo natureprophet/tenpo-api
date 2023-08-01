@@ -1,0 +1,12 @@
+com\tenpo\tenpochallenge\calculator\service\ExternalProviderService.class
+com\tenpo\tenpochallenge\calculator\controller\CalculatorController.class
+com\tenpo\tenpochallenge\calculator\repository\JournalSumCalculationCrudRepository.class
+com\tenpo\tenpochallenge\calculator\service\RestService.class
+com\tenpo\tenpochallenge\calculator\service\CalculatorService.class
+com\tenpo\tenpochallenge\calculator\model\JournalSumCalculation.class
+com\tenpo\tenpochallenge\calculator\model\ValueStorage.class
+com\tenpo\tenpochallenge\calculator\repository\JournalSumCalculationPageableRepository.class
+com\tenpo\tenpochallenge\calculator\repository\ValueStorageRepository.class
+com\tenpo\tenpochallenge\config\SimpleCacheCustomizer.class
+com\tenpo\tenpochallenge\calculator\dto\SumRequestDTO.class
+com\tenpo\tenpochallenge\TenpoChallengeApplication.class

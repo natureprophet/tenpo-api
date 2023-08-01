@@ -1,0 +1,12 @@
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\dto\SumRequestDTO.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\repository\ValueStorageRepository.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\service\CalculatorService.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\model\JournalSumCalculation.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\config\SimpleCacheCustomizer.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\controller\CalculatorController.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\service\RestService.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\TenpoChallengeApplication.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\model\ValueStorage.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\service\ExternalProviderService.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\repository\JournalSumCalculationCrudRepository.java
+C:\Users\Simon\workspace\tenpo-api\tenpo-api\src\main\java\com\tenpo\tenpochallenge\calculator\repository\JournalSumCalculationPageableRepository.java
