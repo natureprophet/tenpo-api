@@ -1,71 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- POM Model Version -->
     <modelVersion>4.0.0</modelVersion>
+
+    <!-- Parent Project -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.1.2</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
+
+    <!-- Project Definition -->
     <groupId>com.tenpo</groupId>
     <artifactId>tenpo-challenge</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>tenpo-challenge</name>
     <description>tenpo-challenge</description>
+
+    <!-- Project Properties -->
     <properties>
+        <!-- Java Version to be used -->
         <java.version>17</java.version>
     </properties>
+
+    <!-- Project Dependencies -->
     <dependencies>
+        <!-- Spring Boot Starter, provides basic configuration for Spring Boot applications -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
         </dependency>
 
+        <!-- Spring Boot Starter Test, provides dependencies for unit and integration testing -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
 
+        <!-- Spring Boot Starter Web, provides features for developing web applications -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Spring Boot Starter Data JPA, for integrating Spring Data JPA with the database -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
 
+        <!-- Lombok, a library to reduce boilerplate code in Java classes -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <!-- PostgreSQL, driver for connecting to the PostgreSQL database -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <scope>runtime</scope>
         </dependency>
 
+        <!-- Spring Boot Starter Cache, for enabling caching in the application -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-cache</artifactId>
         </dependency>
 
+        <!-- Bucket4j Core, a library for rate and capacity limiting of resources -->
         <dependency>
             <groupId>com.bucket4j</groupId>
             <artifactId>bucket4j-core</artifactId>
             <version>8.3.0</version>
         </dependency>
 
+        <!-- Unirest Java, a library for making HTTP calls easily -->
         <dependency>
             <groupId>com.mashape.unirest</groupId>
             <artifactId>unirest-java</artifactId>
             <version>1.4.9</version>
         </dependency>
 
+        <!-- Spring Boot Starter Data Redis, for integrating Spring Data Redis with the Redis in-memory database -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
@@ -73,14 +94,15 @@
 
     </dependencies>
 
+    <!-- Project Build Configuration -->
     <build>
         <plugins>
+            <!-- Spring Boot Maven Plugin, enables packaging the application as an executable JAR -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
         </plugins>
-
     </build>
 
 </project>

@@ -18,13 +18,18 @@ import java.time.Duration;
 @RequestMapping("/api/v1/calculator")
 public class CalculatorController {
 
+    private final int REQUEST_RATE_LIMITE_PER_MINUTE = 3;
+
     final CalculatorService calculatorService;
 
     private final Bucket bucket;
 
     public CalculatorController(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
-        Bandwidth limit = Bandwidth.classic(3, Refill.greedy(3, Duration.ofMinutes(1)));
+
+        // Set rate limiting configuration for API requests
+        Bandwidth limit = Bandwidth.classic(REQUEST_RATE_LIMITE_PER_MINUTE,
+                Refill.greedy(REQUEST_RATE_LIMITE_PER_MINUTE, Duration.ofMinutes(1)));
         this.bucket = Bucket.builder()
                 .addLimit(limit)
                 .build();
@@ -32,16 +37,22 @@ public class CalculatorController {
 
     @PostMapping("/sum")
     public BigDecimal sumWithPercentage(@RequestBody SumRequestDTO sumRequestDTO) {
-        if(bucket.tryConsume(1))
+        // Try to consume a token from the rate limiter bucket
+        if (bucket.tryConsume(1)) {
+            // If a token is available, calculate and return the sum with percentage
             return calculatorService.sumWithPercentage(
                     sumRequestDTO.getNumberOne(), sumRequestDTO.getNumberTwo());
-        throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
-                "REQUEST_LIMIT_PER_MINUTE_REACHED_OUT");
+        } else {
+            // If rate limit is exceeded, throw a "Too Many Requests" exception
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS,
+                    "REQUEST_LIMIT_PER_MINUTE_REACHED_OUT");
+        }
     }
 
     @GetMapping("/journals")
     public Page<JournalSumCalculation> getJournalSumCalculationList(
             @RequestParam(value = "pageNo", defaultValue = "0", required = false) int pageNo) {
+        // Retrieve a paginated list of JournalSumCalculation objects
         return calculatorService.getJournalSumCalculations(pageNo);
     }
 }

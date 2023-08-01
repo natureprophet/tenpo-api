@@ -1,0 +1,328 @@
+{
+	"info": {
+		"_postman_id": "816dcdb6-cc45-4f34-8d48-a76656c1bd9f",
+		"name": "Tenpo API Challenge",
+		"description": "Tenpo API consists of two endpoints, one to obtain the sum of two numbers, adding a percentage obtained from an external service, and another endpoint to retrieve the history of calls made to the previous endpoint.\n\n# API Documentation\n\n## Sum two numbers\n\nAdds two numbers received by parameter and adds a percentage obtained from an external service\n\n``` plaintext\ncurl --location --request POST 'http://localhost:8080/api/v1/calculator/sum' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"numberOne\": 5,\n    \"numberTwo\": 6\n}'\n\n ```\n\n## Get sum history\n\nRetrieve the history of calls and results made to /sum endpoint\n\n```\ncurl --location --request GET 'https//localhost:8080/api/v1/calculator/journals'\n\n ```",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "591258"
+	},
+	"item": [
+		{
+			"name": "Sum two numbers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numberOne\": 30,\n    \"numberTwo\": 50\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/calculator/sum",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"calculator",
+						"sum"
+					]
+				},
+				"description": "Authentication method for obtaining a JWT token. You should specify your email and password which you are using for signing in into dashboard.\nJWT token will be required for creating a payout request. For security reasons, JWT tokens expire after 5 minutes."
+			},
+			"response": [
+				{
+					"name": "Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"your_email\",\n    \"password\": \"your_password\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.nowpayments.io/v1/auth",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nowpayments",
+								"io"
+							],
+							"path": [
+								"v1",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 13 Nov 2020 17:26:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "__cfduid=d100179a7e095065cf498b0371b423b7d1605288381; expires=Sun, 13-Dec-20 17:26:21 GMT; path=/; domain=.nowpayments.io; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15768000"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "cf-request-id",
+							"value": "06643de5b900000022542c9000000001"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?s=%2BQThCuj3D5DwqKzV%2FPRt15xNxPJ2KeOa0YwY8JeNLCpOzK7WTa%2FAv1csNcLl2Q2ZUnQEt4ITZdXfizJUafHl1f9G3F%2BENJmd%2FOe3NKxoFmN5Cjo%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"report_to\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "5f1a3282cac70022-DME"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		},
+		{
+			"name": "List sum history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/v1/calculator/journals",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"calculator",
+						"journals"
+					]
+				},
+				"description": "Authentication method for obtaining a JWT token. You should specify your email and password which you are using for signing in into dashboard.\nJWT token will be required for creating a payout request. For security reasons, JWT tokens expire after 5 minutes."
+			},
+			"response": [
+				{
+					"name": "Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"your_email\",\n    \"password\": \"your_password\" \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.nowpayments.io/v1/auth",
+							"protocol": "https",
+							"host": [
+								"api",
+								"nowpayments",
+								"io"
+							],
+							"path": [
+								"v1",
+								"auth"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 13 Nov 2020 17:26:24 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Set-Cookie",
+							"value": "__cfduid=d100179a7e095065cf498b0371b423b7d1605288381; expires=Sun, 13-Dec-20 17:26:21 GMT; path=/; domain=.nowpayments.io; HttpOnly; SameSite=Lax"
+						},
+						{
+							"key": "X-DNS-Prefetch-Control",
+							"value": "off"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15552000; includeSubDomains"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=15768000"
+						},
+						{
+							"key": "X-Download-Options",
+							"value": "noopen"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "CF-Cache-Status",
+							"value": "DYNAMIC"
+						},
+						{
+							"key": "cf-request-id",
+							"value": "06643de5b900000022542c9000000001"
+						},
+						{
+							"key": "Expect-CT",
+							"value": "max-age=604800, report-uri=\"https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct\""
+						},
+						{
+							"key": "Report-To",
+							"value": "{\"endpoints\":[{\"url\":\"https:\\/\\/a.nel.cloudflare.com\\/report?s=%2BQThCuj3D5DwqKzV%2FPRt15xNxPJ2KeOa0YwY8JeNLCpOzK7WTa%2FAv1csNcLl2Q2ZUnQEt4ITZdXfizJUafHl1f9G3F%2BENJmd%2FOe3NKxoFmN5Cjo%3D\"}],\"group\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "NEL",
+							"value": "{\"report_to\":\"cf-nel\",\"max_age\":604800}"
+						},
+						{
+							"key": "Server",
+							"value": "cloudflare"
+						},
+						{
+							"key": "CF-RAY",
+							"value": "5f1a3282cac70022-DME"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "br"
+						}
+					],
+					"cookie": [],
+					"body": ""
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

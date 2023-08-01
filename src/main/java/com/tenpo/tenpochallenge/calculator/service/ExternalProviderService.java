@@ -31,11 +31,14 @@ public class ExternalProviderService {
         this.restService = restService;
     }
 
+    // Evicts the percentage cache to refresh the value after every 30 minutes.
     @Caching(evict = {@CacheEvict(cacheNames = "percentage", allEntries = true)})
     @Scheduled(fixedDelay = 1000 * 60 * 30) // 30 minutes
-    public void cleanPercentageCache(){}
+    public void cleanPercentageCache() {
+    }
 
-    @Cacheable(value="percentage")
+    // Retrieves the percentage value from an external API and caches it for subsequent calls.
+    @Cacheable(value = "percentage")
     public BigDecimal getPercentage() {
         int retries = 0;
         BigDecimal percentage = null;
@@ -54,17 +57,21 @@ public class ExternalProviderService {
         }
 
         if (percentage == null) {
+            // If unable to fetch the percentage from the external API, attempt to retrieve the last cached value.
             BigDecimal lastPercentage = getLastPercentage();
-            if(lastPercentage != null)
+            if (lastPercentage != null)
                 return lastPercentage;
             else
+                // If no cached value is available, throw a "Service Unavailable" exception.
                 throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE, "SERVICE_UNAVAILABLE");
         }
 
+        // Cache the newly fetched percentage value and update the last cached value.
         updateLastPercentage(percentage);
         return percentage;
     }
 
+    // Saves the updated percentage value to the database.
     public void updateLastPercentage(BigDecimal percentage) {
         ValueStorage valueStorage = valueStorageRepository.findById("percentage")
                 .orElse(new ValueStorage("percentage", percentage));
@@ -72,6 +79,7 @@ public class ExternalProviderService {
         valueStorageRepository.save(valueStorage);
     }
 
+    // Retrieves the last cached percentage value from the database.
     public BigDecimal getLastPercentage() {
         return valueStorageRepository.findById("percentage").orElse(new ValueStorage()).getValue();
     }
