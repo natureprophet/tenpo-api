@@ -10,7 +10,7 @@ from an external service, and another endpoint to retrieve the history of calls 
 ```
  1. git clone https://github.com/natureprophet/tenpo-api.git
  2. cd tenpo-api
- 3. docker compose up
+ 3. docker-compose up
 ```
 The API container is also published on https://hub.docker.com/r/simongs89/tenpo-api, so you can run the docker compose 
 using the local build or the remote one, both options are included on the docker-compose.yml file.
